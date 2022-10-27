@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/xml"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 )
@@ -54,7 +54,7 @@ func getDevtoPosts() *http.Response {
 func readDevtoPosts() []byte {
 	resp := getDevtoPosts()
 
-	data, err := ioutil.ReadAll(resp.Body)
+	data, err := io.ReadAll(resp.Body)
 
 	if err != nil {
 		fmt.Println(err)
